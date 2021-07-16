@@ -1,24 +1,27 @@
 <template>
-  <main class="conatiner">
+  <main class="container">
     <AppHeader />
     <AppRestaurantInfo :datasource="fooddata" />
   </main>
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader.vue';
-import AppRestaurantInfo from '@/components/AppRestaurantInfo.vue';
-import { mapState } from 'vuex';
-
+import AppHeader from "@/components/AppHeader.vue";
+import AppRestaurantInfo from "@/components/AppRestaurantInfo.vue";
 
 export default {
   components: {
-    AppRestaurantInfo,
-    AppHeader
+    AppHeader,
+    AppRestaurantInfo: () =>
+      import(/* webpackPrefetch: true */ "@/components/AppRestaurantInfo.vue"),
   },
   computed: {
-    ...mapState(['fooddata']),
+    fooddata() {
+      return this.$store.state.fooddata;
+    },
   },
 };
-
 </script>
+
+<style></style>
+

@@ -1,3 +1,5 @@
-export default async ({ store }) => {
+export default async ({
+  store
+}) => {
   await store.dispatch('getFoodData')
 }
