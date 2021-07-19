@@ -127,8 +127,10 @@ export default {
       };
 
       let addOnError = this.$v.itemAddons.$invalid;
-      let optionError = this.$v.itemOptions.$invalid;
       
+      let optionError = this.currentItem.option
+        ? this.$v.itemOptions.$invalid
+        : false;
 
       if (addOnError || optionError) {
         this.errors = true; 
